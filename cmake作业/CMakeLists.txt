@@ -1,7 +1,0 @@
-cmake_minimum_required(VERSION 3.10)
-project(Test CXX)
-set(CMAKE_CXX_STANDARD 17)
-add_subdirectory(common)
-add_subdirectory(modules)
-add_executable(test main.cpp)
-target_link_libraries(test PRIVATE M1 M2 math)
