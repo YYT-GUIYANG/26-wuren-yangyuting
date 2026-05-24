@@ -1,5 +1,8 @@
+#编译产物
 lr
 ridge
+linear_regression
+ridge_regression
 *.o
 *.out
 a.out
@@ -9,3 +12,5 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+#openGA是clone下来的，不要嵌套git
+作业1/openGA/.git/
