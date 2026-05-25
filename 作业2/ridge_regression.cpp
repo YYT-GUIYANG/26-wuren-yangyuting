@@ -24,7 +24,8 @@ vector<vector<double>> read_data(string path,int n_feat)
     }
     return data;
 }
-class RidgeRegression{
+class RidgeRegression
+{
 public:
     vector<double> w;
     double buchang;
@@ -36,21 +37,24 @@ public:
         counters=n_epochs;
         lambda=lam;
     }
-    double predict(vector<double> x){
+    double predict(vector<double> x)
+    {
         double y_hat=w[0];
         for(int j=1;j<(int)w.size();j++)
             y_hat+=w[j]*x[j-1];
         return y_hat;
     }
-    void fit(vector<vector<double>> data,int n_feat){
+    void fit(vector<vector<double>> data,int n_feat)
+    {
         /*
-         *流程：跟普通线性回归一样，但梯度对w1~wn多加2*lambda*w
-         *局部变量：n,grad,err
-         *成员变量：w更新，lambda不变
-         *依赖：predict
+         流程：跟普通线性回归一样，但梯度对w1~wn多加2*lambda*w
+         局部变量：n,grad,err
+         成员变量：w更新，lambda不变
+         依赖：predict
          */
         int n=data.size();
-        for(int ep=0;ep<counters;ep++){
+        for(int ep=0;ep<counters;ep++)
+          {
             vector<double> grad(w.size(),0);
             for(int i=0;i<n;i++){
                 vector<double> x(data[i].begin(),data[i].begin()+n_feat);
@@ -68,9 +72,11 @@ public:
             }
         }
     }
-    double mse(vector<vector<double>> data,int n_feat){
+    double mse(vector<vector<double>> data,int n_feat)
+   {
         double s=0;
-        for(auto row:data){
+        for(auto row:data)
+        {
             vector<double> x(row.begin(),row.begin()+n_feat);
             double e=predict(x)-row[n_feat];
             s+=e*e;
@@ -78,7 +84,8 @@ public:
         return s/data.size();
     }
 };
-int main(){
+int main()
+{
     int n_feat=8;
     auto train=read_data("data/train.csv",n_feat);
     auto test=read_data("data/test.csv",n_feat);
@@ -90,7 +97,8 @@ int main(){
     cout<<"测试MSE:"<<model.mse(test,n_feat)<<endl;
     ofstream fout("data/pred_ridge.csv");
     fout<<"y_true,y_pred\n";
-    for(auto row:test){
+    for(auto row:test)
+    {
         vector<double> x(row.begin(),row.begin()+n_feat);
         fout<<row[n_feat]<<","<<model.predict(x)<<"\n";
     }
