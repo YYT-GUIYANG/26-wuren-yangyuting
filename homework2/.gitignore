@@ -1,8 +1,8 @@
 #编译产物
-homework2/lr
-homework2/ridge
-homework2/linear_regression
-homework2/ridge_regression
+lr
+ridge
+linear_regression
+ridge_regression
 *.o
 *.out
 a.out
@@ -12,6 +12,5 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
-.~lock*
 #openGA是clone下来的，不要嵌套git
-homework2/作业1/openGA/.git/
+作业1/openGA/.git/

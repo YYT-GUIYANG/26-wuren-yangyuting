@@ -9,7 +9,8 @@
 #include <cmath>
 using namespace std;
 //读csv，一行8个特征+1个房价y
-vector<vector<double>> read_data(string path,int n_feat){
+vector<vector<double>> read_data(string path,int n_feat)
+{
     vector<vector<double>> data;
     ifstream fin(path);
     string line;
@@ -68,7 +69,8 @@ public:
                 w[j]-=buchang*grad[j]/n;//梯度下降，buchang别太大不然发散
         }
     }
-    double mse(vector<vector<double>> data,int n_feat){
+    double mse(vector<vector<double>> data,int n_feat)
+    {
         //均方误差，越小越好，用来检查拟合效果
         double s=0;
         for(auto row:data){

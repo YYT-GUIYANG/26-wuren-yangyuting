@@ -31,7 +31,8 @@ public:
     double buchang;
     int counters;
     double lambda;//正则系数，PPT上说λ
-    RidgeRegression(int dim,double learning_rate,int n_epochs,double lam){
+    RidgeRegression(int dim,double learning_rate,int n_epochs,double lam)
+    {
         w.assign(dim,0);
         buchang=learning_rate;
         counters=n_epochs;
@@ -45,13 +46,10 @@ public:
         return y_hat;
     }
     void fit(vector<vector<double>> data,int n_feat)
-    {
-        /*
-         流程：跟普通线性回归一样，但梯度对w1~wn多加2*lambda*w
+    {   
+    /* 流程：跟普通线性回归一样，但梯度对w1~wn多加2*lambda*w
          局部变量：n,grad,err
-         成员变量：w更新，lambda不变
-         依赖：predict
-         */
+         成员变量：w更新，lambda不变*/
         int n=data.size();
         for(int ep=0;ep<counters;ep++)
           {
@@ -64,9 +62,10 @@ public:
                 for(int j=1;j<(int)w.size();j++)
                     grad[j]+=err*x[j-1];
             }
-            for(int j=0;j<(int)w.size();j++){
+            for(int j=0;j<(int)w.size();j++)
+            {
                 grad[j]=grad[j]/n;
-                if(j>0)//偏置w0一般不惩罚，老师说的
+                if(j>0)
                     grad[j]+=2*lambda*w[j];
                 w[j]-=buchang*grad[j];
             }
