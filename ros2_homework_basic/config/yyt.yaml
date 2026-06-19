@@ -1,0 +1,10 @@
+# yyt.cpp 的参数配置（修改此文件后重新 launch 即可，无需重新编译）
+#
+# 调参原则：
+#   圆半径 r = linear_x / angular_z_abs  （r 越小越不容易撞墙）
+#   每圈时间 = 2π / angular_z_abs       （angular_z 越大转得越快）
+#   想加速又不撞墙：保持 r 较小，同时提高 linear_x 和 angular_z_abs
+/draw_zuoye_node:
+  ros__parameters:
+    linear_x: 1.8          # 略低于 turtlesim 上限 2.0，减少撞墙
+    angular_z_abs: 1.4     # r≈1.29，每圈约4.5秒；比 2.0/1.0 更快且轨迹更小

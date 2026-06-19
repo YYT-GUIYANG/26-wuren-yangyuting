@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OpenGA Code Generator</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <h1 class="title">OpenGA Assist</h1>
+            <div class="center">
+                Configure your Genetic Algorithm preferences:
+            </div>
+            <span class="separator"></span>
+<!-- ********************************* -->
+            <div class="row">
+                <div class="cell_label_l">
+                    Population size:
+                </div>
+                <div class="cell_input">
+                    <select onchange="update_codes()" name="population" id="population">
+                        <option value="small">Small (50)</option>
+                        <option value="medium" selected>Medium (200)</option>
+                        <option value="large">Large (1000)</option>
+                    </select>
+                </div>
+            </div>
+<!-- ********************************* -->
+            <div class="row">
+                <div class="cell_label_l">
+                    Verbose output:
+                </div>
+                <div class="cell_input">
+                    <select onchange="update_codes()" name="verbose" id="verbose">
+                        <option value="false" selected>False</option>
+                        <option value="true">True</option>
+                    </select>
+                </div>
+            </div>
+<!-- ********************************* -->
+            <div class="row">
+                <div class="cell_label_l">
+                    How long does it take to evaluate a single solution?
+                </div>
+                <div class="cell_input">
+                    <select onchange="update_codes()" name="heavyness" id="heavyness">
+                        <option value="light" selected>Light (0-10ms)</option>
+                        <option value="medium">Medium (10ms-1s)</option>
+                        <option value="heavy">Heavy (&gt;1s)</option>
+                    </select>
+                </div>
+            </div>
+<!-- ********************************* -->
+            <div class="row">
+                <div class="cell_label_l">
+                    Optimization type:
+                </div>
+                <div class="cell_input">
+                    <select onchange="update_codes()" name="objnum" id="objnum">
+                        <option value="single" selected>Single Objective</option>
+                        <option value="multiple">Multi-Objective (NSGA-III)</option>
+                    </select>
+                </div>
+            </div>
+<!-- ********************************* -->
+            <span class="separator"></span>
+            <div class="row">
+                <div class="cell_label_l">Solution struct name:</div>
+                <div class="cell_input">
+                    <input type="text" class="short_text" name="solution_name" id="solution_name" value="MySolution" onchange="update_codes()">
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell_label_l">Evaluation result struct name:</div>
+                <div class="cell_input">
+                    <input type="text" class="short_text" name="eval_name" id="eval_name" value="MyMiddleCost" onchange="update_codes()">
+                </div>
+            </div>
+            <span class="separator"></span>
+<!-- ********************************* -->
+            <div class="row">
+                <div class="center">Optimization variables:</div>
+                <div id="opt_var">
+                </div>
+                <div class="add_more">
+                    <button onclick="add_more_var()" class="btn">+ Add Variable</button>
+                </div>
+            </div>
+<!-- ********************************* -->
+            <span class="separator"></span>
+<!-- ********************************* -->
+            <div class="row">
+                <div class="center">Objective functions:</div>
+                <div id="opt_obj">
+                </div>
+                <div class="add_more">
+                    <button onclick="add_more_obj()" class="btn">+ Add Objective</button>
+                </div>
+            </div>
+<!-- ********************************* -->
+            <span class="separator"></span>
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> This tool assists in generating code rapidly.
+                The generated code should be edited and tailored to your specific application.
+                There is no warranty that this code works, is correct, or is optimal.
+                This code assist does not work properly with non-floating point operations.
+                The author accepts no responsibility.
+            </div>
+            <span class="separator"></span>
+<!-- ********************************* -->
+            <div class="center">
+                <strong>Generated Code:</strong>
+            </div>
+            <div class="code-header">
+                <button onclick="copyCode()" class="btn-copy">📋 Copy to Clipboard</button>
+                <span id="copy-status" class="copy-status"></span>
+            </div>
+            <div id="code">
+                Generated code ...
+            </div>
+            <span class="separator"></span>
+<!-- ********************************* -->
+        </div>
+    </div>
+<script src="main.js"></script>
+</body>
+</html>

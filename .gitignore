@@ -1,0 +1,13 @@
+
+# ROS2 编译产物（每人环境不同，不应进版本库）
+**/build/
+**/install/
+**/log/
+**/.vscode/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 系统文件
+.DS_Store
